@@ -1,8 +1,6 @@
-﻿// Lab_1.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-//
-
-#include <iostream>
-
+﻿
+#include <iostream> //и ауе стрим
+#include <bitset>
 int main()
 {
 	setlocale(LC_ALL, "Russian");
@@ -12,22 +10,22 @@ int main()
 
 	//вывод второго задания
 	cout << "2.\n";
-	cout << "min int = -2147483648, max int = 2147483647, size of int = 4 байта\n";
-	cout << "min unsigned int = 0, max unsigned int =  4 294 967 295, size of unsigned int = 4 байта\n";
-	cout << "min short = -32 768, max short = 32 767, size of short = 2 байта\n";
-	cout << "min unsigned short = 0, max unsigned short =  65 535, size of unsigned short = 2 байта\n";
-	cout << "min long = -2 147 483 648 , max long = 2 147 483 647 , size of long = 4 байта\n";
-	cout << "min long long = -9 223 372 036 854 775 808, max long long = -9 223 372 036 854 775 807, size of long long = 8 байт\n";
-	cout << "min double = -9 223 372 036 854 775 808 .0, max double = 9 223 372 036 854 775 807 .0, size of double = 8 байт\n";
-	cout << "min char = -128, max char = 127, size of char = 1 байт\n";
-	cout << "min bool = false, max bool = true, size of bool = 1 байт\n";
+	cout << "min int =" << INT_MIN << ", max int = " << INT_MAX << ", size of int = " << sizeof(int) << "\n";
+	cout << "min unsigned int =" << 0 << ", max unsigned int =" << UINT_MAX << " , size of unsigned int = " << sizeof(unsigned int) << "\n";
+	cout << "min short =" << SHRT_MIN << ", max short =" << SHRT_MAX << ", size of short =" << sizeof(short) << "\n";
+	cout << "min unsigned short =" << 0 << ", max unsigned short = " << USHRT_MAX << ", size of unsigned short =" << sizeof(unsigned short) << "\n";
+	cout << "min long =" << LONG_MIN << ", max long =" << LONG_MAX << ", size of long =" << sizeof(long) << "\n";
+	cout << "min long long =" << LLONG_MIN << " , max long long = " << LLONG_MAX << ", size of long long =" << sizeof(long long) << "\n";
+	cout << "min double =" << DBL_MIN << ", max double = " << DBL_MAX << " , size of double =" << sizeof(double) << "\n";
+	cout << "min char =" << CHAR_MIN << ", max char =" << CHAR_MAX << ", size of char = " << sizeof(char) << "\n";
+	cout << "min bool =" << 0 << ", max bool =" << 1 << " , size of bool = " << sizeof(bool) << "\n";
 
-	cout << "3.\n";
+	cout << "3.\n"; //вывод третьего задания
 	cout << "Введите число:\n";
 	int chislo;
 	cin >> chislo;
 	int res = 0;
-	int chislo2 = chislo;//костыль, чтобы использовать манипулятор hex
+	int chislo2 = chislo;
 	cout << "В шестнадцатиричном виде:" << hex/*преобразование десятичного числа в шестнадцатеричное*/ << chislo2 << "\n";
 	cout << "int:" << int(chislo) << "\n";
 	cout << "unsigned int:" << unsigned int(chislo) << "\n";
@@ -38,32 +36,27 @@ int main()
 	cout << "bool:" << bool(chislo) << "\n";
 	cout << "double:" << double(chislo) << "\n";
 	cout << "char:" << char(chislo) << "\n";
-	cout << "В бинарном виде:";
-	for (int i = 7; i >= 0; i--)
-	{		if (chislo & (1 << i))
-				cout << "1";
-			else
-		cout << "0";
-	}
+	cout << "В бинарном виде:" << bitset<16>(chislo) << "\n";
+	
 
 	cout << "\n";
-	cout << "4.\n";
+	cout << "4.\n"; //вывод четвертого задания
 	cout << "Ведите коэффиценты а*х=b:\n";
-	double a, b;
+	int a, b;
 	cin >> a;
 	cin >> b;
 	cout << a << "  * x =" << b << "\n";
 	cout << "x = " << b << "/" << a << "\n";
-	cout << "x = " << b/a << "\n";
-	cout << "Ответ:" << b/a<< "\n";
+	cout << "x = " << double(b/a) << "\n";
+	cout << "Ответ:" << double(b/a)<< "\n";
 
 
-	cout << "5.\n";
+	cout << "5.\n"; //вывод пятого задания
 	cout << "Введите координаты отрезка на прямой:\n";
-	double k1, k2;
+	int k1, k2;
 	cin >> k1;
 	cin >> k2;
-	int k12 = (k1 + k2) / 2;
+	double k12 = (k1 + k2) / 2;
 	cout << "Середина отрезка находится в точке с координатой " << k12 << "\n";
 
 }
