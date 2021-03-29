@@ -1,7 +1,99 @@
 ﻿
 #include <iostream> //и ауе стрим
 #include <bitset>
+
+
+#include <string>
+#include <iostream>
+#include <stdio.h>
+#include <conio.h>
+#include <cstring>
+#include <ctype.h>
+using namespace std;
+void readStr(char input[255], const char* text) {
+	cout << text << "\n";
+	cin.getline(input, 255);//считывание массива символов(строки!!)
+}
+
+void task1() {
+	cout << "Введите слово\n";
+	string str1 = "";
+	cin >> str1;
+	int d = 0;
+	for (int i = 0; i < str1.length(); i++) {
+		if (str1[i] == str1[str1.length() - 1 - i]) {
+			d++;
+		}
+	}
+	if (d == str1.length())
+		cout << "yes\n\n";
+	else
+		cout << "no\n\n";
+};
+
+
+void encrypt(char* str_for_encrypt, int key) {
+	char ch;
+	for (int i = 0; str_for_encrypt[i] != '\0'; ++i) {
+		ch = str_for_encrypt[i];
+
+		if (ch >= 'a' && ch <= 'z') {
+			ch = ch + key;
+			if (ch > 'z') {
+				ch = ch - 'z' + 'a' - 1;
+			}
+			str_for_encrypt[i] = ch;
+		}
+
+		else if (ch >= 'A' && ch <= 'Z') {
+			ch = ch + key;
+			if (ch > 'Z') {
+				ch = ch - 'Z' + 'A' - 1;
+			}
+			str_for_encrypt[i] = ch;
+		}
+	}
+};
+
+
 int main()
+ {
+	setlocale(0, "");
+	cout << "Выберите действие:\n";
+	int p = 0;
+	char mainStr[255];
+	while (true) {
+		cout << "1.Проверить на полиндром\n"
+			<< "2.Шифр цезаря\n"
+			<< "3.Текст в тексте\n"
+			<< "4.Выход\n";
+		cin >> p;
+
+		switch (p) {
+		case 1:
+			task1();
+			break;
+		case 2:
+			readStr(mainStr, "Введите строку, которую нужно зашифровать:");
+			cout << "Введите ключ (число): \n";
+			int key;
+			cin >> key;
+			encrypt(mainStr, key);
+
+			cout << mainStr << '\n';
+			break;
+		default:
+			cout << "Введите ключ (число): \n";
+
+			break;
+
+
+		}
+
+	}
+}
+
+/*int main()
 {
 	setlocale(LC_ALL, "Russian");
 	using namespace std; //избавление от необходимости прописывать std::cout
@@ -60,4 +152,4 @@ int main()
 	cout << "Середина отрезка находится в точке с координатой " << k12 << "\n";
 
 }
-
+*/

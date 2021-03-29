@@ -42,7 +42,7 @@ void task2()
 	}
 }
 
-void task3()
+void sort_slin()
 {
 	int sum = 0;
 	int chet = 0;
@@ -84,7 +84,7 @@ int main()
 			task2();
 			break;
 		case 3:
-			task3();
+			sort_slin();
 			break;
 		case 4:
 			std::cout << "Выходим!\n"; //выход
